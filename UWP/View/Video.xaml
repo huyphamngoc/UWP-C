@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="UWP.View.Video"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel>
+            <Button Click="OnSelectFolder">Choose files</Button>
+
+            <ListView Name="ListViewMusic"
+                      Margin="0, 50, 0, 0"
+                      ItemsSource="{x:Bind Videos, Mode=TwoWay}"
+                      SelectionChanged="OnSelectVideo">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock>Tên</TextBlock>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <MediaElement Name="VideoPlayer" 
+                          AutoPlay="True"
+                          AreTransportControlsEnabled="True"/>
+        </StackPanel>
+    </Grid>
+</Page>
